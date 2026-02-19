@@ -696,16 +696,16 @@
             </div>
             <div class="keyboard">
                 <div class="keyboard-row">
-                    <button class="key" onclick="typeKey('1')" data-gaze-region="" data-gaze-region-dwell-time="1000" data-gaze-region-activation-method="Gaze" data-gaze-region-margin="1vw, -0.5vw" data-gaze-region-visibility="true">1</button>
-                    <button class="key" onclick="typeKey('2')" data-gaze-region="" data-gaze-region-dwell-time="1000" data-gaze-region-activation-method="Gaze" data-gaze-region-margin="1vw, -0.5vw" data-gaze-region-visibility="true">2</button>
-                    <button class="key" onclick="typeKey('3')" data-gaze-region="" data-gaze-region-dwell-time="1000" data-gaze-region-activation-method="Gaze" data-gaze-region-margin="1vw, -0.5vw" data-gaze-region-visibility="true">3</button>
-                    <button class="key" onclick="typeKey('4')" data-gaze-region="" data-gaze-region-dwell-time="1000" data-gaze-region-activation-method="Gaze" data-gaze-region-margin="1vw, -0.5vw" data-gaze-region-visibility="true">4</button>
-                    <button class="key" onclick="typeKey('5')" data-gaze-region="" data-gaze-region-dwell-time="1000" data-gaze-region-activation-method="Gaze" data-gaze-region-margin="1vw, -0.5vw" data-gaze-region-visibility="true">5</button>
-                    <button class="key" onclick="typeKey('6')" data-gaze-region="" data-gaze-region-dwell-time="1000" data-gaze-region-activation-method="Gaze" data-gaze-region-margin="1vw, -0.5vw" data-gaze-region-visibility="true">6</button>
-                    <button class="key" onclick="typeKey('7')" data-gaze-region="" data-gaze-region-dwell-time="1000" data-gaze-region-activation-method="Gaze" data-gaze-region-margin="1vw, -0.5vw" data-gaze-region-visibility="true">7</button>
-                    <button class="key" onclick="typeKey('8')" data-gaze-region="" data-gaze-region-dwell-time="1000" data-gaze-region-activation-method="Gaze" data-gaze-region-margin="1vw, -0.5vw" data-gaze-region-visibility="true">8</button>
-                    <button class="key" onclick="typeKey('9')" data-gaze-region="" data-gaze-region-dwell-time="1000" data-gaze-region-activation-method="Gaze" data-gaze-region-margin="1vw, -0.5vw" data-gaze-region-visibility="true">9</button>
-                    <button class="key" onclick="typeKey('0')" data-gaze-region="" data-gaze-region-dwell-time="1000" data-gaze-region-activation-method="Gaze" data-gaze-region-margin="1vw, -0.5vw" data-gaze-region-visibility="true">0</button>
+                    <button class="key" onclick="typeKey('1')" data-gaze-region="" data-gaze-region-dwell-time="1000" data-gaze-region-activation-method="Gaze" data-gaze-region-visibility="true">1</button>
+                    <button class="key" onclick="typeKey('2')" data-gaze-region="" data-gaze-region-dwell-time="1000" data-gaze-region-activation-method="Gaze" data-gaze-region-visibility="true">2</button>
+                    <button class="key" onclick="typeKey('3')" data-gaze-region="" data-gaze-region-dwell-time="1000" data-gaze-region-activation-method="Gaze" data-gaze-region-visibility="true">3</button>
+                    <button class="key" onclick="typeKey('4')" data-gaze-region="" data-gaze-region-dwell-time="1000" data-gaze-region-activation-method="Gaze" data-gaze-region-visibility="true">4</button>
+                    <button class="key" onclick="typeKey('5')" data-gaze-region="" data-gaze-region-dwell-time="1000" data-gaze-region-activation-method="Gaze" data-gaze-region-visibility="true">5</button>
+                    <button class="key" onclick="typeKey('6')" data-gaze-region="" data-gaze-region-dwell-time="1000" data-gaze-region-activation-method="Gaze" data-gaze-region-visibility="true">6</button>
+                    <button class="key" onclick="typeKey('7')" data-gaze-region="" data-gaze-region-dwell-time="1000" data-gaze-region-activation-method="Gaze" data-gaze-region-visibility="true">7</button>
+                    <button class="key" onclick="typeKey('8')" data-gaze-region="" data-gaze-region-dwell-time="1000" data-gaze-region-activation-method="Gaze" data-gaze-region-visibility="true">8</button>
+                    <button class="key" onclick="typeKey('9')" data-gaze-region="" data-gaze-region-dwell-time="1000" data-gaze-region-activation-method="Gaze" data-gaze-region-visibility="true">9</button>
+                    <button class="key" onclick="typeKey('0')" data-gaze-region="" data-gaze-region-dwell-time="1000" data-gaze-region-activation-method="Gaze" data-gaze-region-visibility="true">0</button>
                 </div>
                 <div class="keyboard-row">
                     <button class="key" onclick="typeKey('Q')" data-gaze-region="" data-gaze-region-dwell-time="1000" data-gaze-region-activation-method="Gaze">Q</button>
@@ -850,7 +850,7 @@
                 btn.setAttribute('data-gaze-region', '');
                 btn.setAttribute('data-gaze-region-dwell-time', '2000');
                 btn.setAttribute('data-gaze-region-activation-method', 'Gaze');
-                btn.setAttribute('data-gaze-region-margin', '1vw, -0.5vw');
+                // removed data-gaze-region-margin
                 btn.setAttribute('data-gaze-region-visibility', 'true');
                 btn.onclick = () => {
                     navigator.clipboard.writeText(phrase).catch(() => {});
