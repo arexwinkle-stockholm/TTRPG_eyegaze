@@ -354,20 +354,100 @@
         }
 
         /* Keyboard Styles */
+        .keyboard-output-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            align-items: stretch;
+        }
+
+        .keyboard-speak-btn {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            color: var(--foreground);
+            font-family: 'Cinzel', serif;
+            font-weight: 600;
+            min-width: 80px;
+            font-size: 1.5em;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.15s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .keyboard-speak-btn:hover {
+            background: var(--primary);
+            color: var(--primary-dark);
+        }
+
         .keyboard-output {
             background: var(--secondary);
             border: 1px solid var(--border);
             border-radius: 8px;
             padding: 15px;
-            margin-bottom: 20px;
             min-height: 50px;
             font-size: 1.2em;
             word-wrap: break-word;
+            flex: 1;
         }
 
         .keyboard-output.empty {
             color: var(--muted-foreground);
             font-style: italic;
+        }
+
+        /* Scroll Buttons */
+        .scroll-controls {
+            position: fixed;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            z-index: 1000;
+        }
+
+        .scroll-btn {
+            background: var(--card);
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 2.5em;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .scroll-btn:hover {
+            background: var(--primary);
+            color: var(--card);
+            box-shadow: 0 0 25px rgba(68, 153, 189, 0.6);
+            transform: scale(1.05);
+        }
+
+        .scroll-btn:active {
+            transform: scale(0.95);
+        }
+
+        @media (max-width: 768px) {
+            .scroll-controls {
+                left: 5px;
+            }
+
+            .scroll-btn {
+                width: 60px;
+                height: 60px;
+                font-size: 2em;
+            }
         }
 
         .keyboard {
@@ -446,6 +526,18 @@
     </style>
 </head>
 <body>
+    <!-- Scroll Controls -->
+    <div class="scroll-controls">
+        <button class="scroll-btn" onclick="scrollPage('up')" 
+                data-gaze-region 
+                data-gaze-region-dwell-time="1500" 
+                data-gaze-region-activation-method="Gaze">▲</button>
+        <button class="scroll-btn" onclick="scrollPage('down')" 
+                data-gaze-region 
+                data-gaze-region-dwell-time="1500" 
+                data-gaze-region-activation-method="Gaze">▼</button>
+    </div>
+
     <div class="container">
         <header>
             <h1>D&D Companion</h1>
@@ -669,8 +761,11 @@
         <!-- Section 4: Virtual Keyboard -->
         <div class="section">
             <h2 class="section-title">⌨️ Virtual Keyboard</h2>
-            <div class="keyboard-output" id="keyboardOutput">
-                <span class="empty">Type something...</span>
+            <div class="keyboard-output-container">
+                <button class="keyboard-speak-btn" onclick="speakKeyboard()" data-gaze-region data-gaze-region-dwell-time="1500" data-gaze-region-activation-method="Gaze">🔊</button>
+                <div class="keyboard-output" id="keyboardOutput">
+                    <span class="empty">Type something...</span>
+                </div>
             </div>
             <div class="keyboard">
                 <div class="keyboard-row">
@@ -747,7 +842,6 @@
             const resultDiv = document.getElementById('result');
             const totalDiv = document.getElementById('resultTotal');
             const breakdownDiv = document.getElementById('resultBreakdown');
-            
             const rolls = [];
             let total = 0;
 
@@ -761,6 +855,7 @@
             }
 
             totalDiv.textContent = total;
+            speak(total.toString()); // Speak the new total result
             
             breakdownDiv.innerHTML = '';
             rolls.forEach(({ sides, roll }) => {
@@ -830,6 +925,7 @@
                 btn.setAttribute('data-gaze-region-activation-method', 'Gaze');
                 // removed data-gaze-region-margin
                 const copyPhrase = () => {
+                    speak(phrase); // Speak the phrase
                     navigator.clipboard.writeText(phrase).catch(() => {});
                     btn.classList.add('copied');
                     btn.textContent = 'Copied!';
@@ -862,6 +958,12 @@
             updateKeyboardOutput();
         }
 
+        function speakKeyboard() {
+            if (keyboardText) {
+                speak(keyboardText);
+            }
+        }
+
         function updateKeyboardOutput() {
             const output = document.getElementById('keyboardOutput');
             if (keyboardText) {
@@ -870,6 +972,22 @@
             } else {
                 output.innerHTML = '<span class="empty">Type something...</span>';
                 output.classList.add('empty');
+            }
+        }
+
+
+        function speak(value) {  
+       
+        const utterance = new SpeechSynthesisUtterance(value);
+        speechSynthesis.speak(utterance);
+        }
+
+        function scrollPage(direction) {
+            const scrollAmount = 300;
+            if (direction === 'up') {
+                window.scrollBy({ top: -scrollAmount, behavior: 'smooth' });
+            } else if (direction === 'down') {
+                window.scrollBy({ top: scrollAmount, behavior: 'smooth' });
             }
         }
 
