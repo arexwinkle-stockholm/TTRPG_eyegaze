@@ -438,6 +438,13 @@
             transform: scale(0.95);
         }
 
+        /* Gaze Glow Effect */
+        .gaze-glow {
+            box-shadow: 0 0 30px rgba(68, 153, 189, 0.8), 0 0 50px rgba(68, 153, 189, 0.5) !important;
+            transform: scale(1.02) !important;
+            transition: all 0.2s ease-out !important;
+        }
+
         @media (max-width: 768px) {
             .scroll-controls {
                 left: 5px;
@@ -936,6 +943,7 @@
                 };
                 btn.onclick = copyPhrase;
                 btn.addEventListener('gazeactivate', copyPhrase);
+                setupGazeGlow(btn);
                 container.appendChild(btn);
             });
         }
@@ -991,6 +999,35 @@
             }
         }
 
+        // Gaze Glow Effect Logic
+        const gazeTimers = new Map();
+
+        function addGazeGlow(element) {
+            element.classList.add('gaze-glow');
+        }
+
+        function removeGazeGlow(element) {
+            element.classList.remove('gaze-glow');
+        }
+
+        function setupGazeGlow(element) {
+            element.addEventListener('gazeenter', () => {
+                const timer = setTimeout(() => {
+                    addGazeGlow(element);
+                }, 200);
+                gazeTimers.set(element, timer);
+            });
+
+            element.addEventListener('gazeexit', () => {
+                const timer = gazeTimers.get(element);
+                if (timer) {
+                    clearTimeout(timer);
+                    gazeTimers.delete(element);
+                }
+                removeGazeGlow(element);
+            });
+        }
+
         // Initialize
         initPhraseBank();
         updateRollButton();
@@ -1001,12 +1038,25 @@
         // Dice roller buttons
         document.querySelectorAll('.dice-btn').forEach(btn => {
             btn.addEventListener('gazeactivate', () => btn.click());
+            setupGazeGlow(btn);
         });
         
         // Keyboard keys
         document.querySelectorAll('.key').forEach(key => {
             key.addEventListener('gazeactivate', () => key.click());
+            setupGazeGlow(key);
         });
+        
+        // Scroll buttons
+        document.querySelectorAll('.scroll-btn').forEach(btn => {
+            setupGazeGlow(btn);
+        });
+        
+        // Roll button
+        setupGazeGlow(document.getElementById('rollBtn'));
+        
+        // Keyboard speak button
+        setupGazeGlow(document.querySelector('.keyboard-speak-btn'));
         
         // Phrase bank buttons (already created dynamically, so add to initPhraseBank)
         // Character sheet inputs will work natively with gaze focus
