@@ -543,7 +543,7 @@
             </div>
                 <button class="roll-btn" id="rollBtn" onclick="rollDice()"
                     data-gaze-region
-                    data-gaze-region-dwell-time="2000"
+                    data-gaze-region-dwell-time="300"
                     data-gaze-region-activation-method="Gaze">
                     🎲 Roll Dice
                 </button>
@@ -829,7 +829,7 @@
                 btn.setAttribute('data-gaze-region-dwell-time', '300');
                 btn.setAttribute('data-gaze-region-activation-method', 'Gaze');
                 // removed data-gaze-region-margin
-                btn.onclick = () => {
+                const copyPhrase = () => {
                     navigator.clipboard.writeText(phrase).catch(() => {});
                     btn.classList.add('copied');
                     btn.textContent = 'Copied!';
@@ -838,6 +838,8 @@
                         btn.textContent = phrase;
                     }, 1200);
                 };
+                btn.onclick = copyPhrase;
+                btn.addEventListener('gazeactivate', copyPhrase);
                 container.appendChild(btn);
             });
         }
@@ -874,6 +876,22 @@
         // Initialize
         initPhraseBank();
         updateRollButton();
+
+        // Add gaze event listeners for Tobii Dynavox browser
+        document.getElementById('rollBtn').addEventListener('gazeactivate', rollDice);
+        
+        // Dice roller buttons
+        document.querySelectorAll('.dice-btn').forEach(btn => {
+            btn.addEventListener('gazeactivate', () => btn.click());
+        });
+        
+        // Keyboard keys
+        document.querySelectorAll('.key').forEach(key => {
+            key.addEventListener('gazeactivate', () => key.click());
+        });
+        
+        // Phrase bank buttons (already created dynamically, so add to initPhraseBank)
+        // Character sheet inputs will work natively with gaze focus
     </script>
 </body>
 </html>
