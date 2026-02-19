@@ -417,10 +417,12 @@
             border: 3px solid var(--primary);
             color: var(--primary);
             width: 120px;
-            height: 120px;
+            height: 100px;
             border-radius: 12px;
             cursor: pointer;
-            font-size: 3.5em;
+            font-size: 1.1em;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
             transition: all 0.2s;
             display: flex;
             align-items: center;
@@ -536,14 +538,22 @@
 <body>
     <!-- Scroll Controls -->
     <div class="scroll-controls">
-        <button class="scroll-btn" onclick="scrollPage('up')" 
+        <button class="scroll-btn" onclick="scrollToSection('dice')" 
                 data-gaze-region 
                 data-gaze-region-dwell-time="800" 
-                data-gaze-region-activation-method="Gaze">▲</button>
-        <button class="scroll-btn" onclick="scrollPage('down')" 
+                data-gaze-region-activation-method="Gaze">🎲 Dice</button>
+        <button class="scroll-btn" onclick="scrollToSection('character')" 
                 data-gaze-region 
                 data-gaze-region-dwell-time="800" 
-                data-gaze-region-activation-method="Gaze">▼</button>
+                data-gaze-region-activation-method="Gaze">📜 Sheet</button>
+        <button class="scroll-btn" onclick="scrollToSection('phrases')" 
+                data-gaze-region 
+                data-gaze-region-dwell-time="800" 
+                data-gaze-region-activation-method="Gaze">💬 Phrases</button>
+        <button class="scroll-btn" onclick="scrollToSection('keyboard')" 
+                data-gaze-region 
+                data-gaze-region-dwell-time="800" 
+                data-gaze-region-activation-method="Gaze">⌨️ Keys</button>
     </div>
 
     <div class="container">
@@ -553,7 +563,7 @@
         </header>
 
         <!-- Section 1: Dice Roller -->
-        <div class="section">
+        <div class="section" id="dice">
             <h2 class="section-title">🎲 Dice Roller</h2>
             <div class="dice-grid">
                 <div class="dice-type">
@@ -654,7 +664,7 @@
         </div>
 
         <!-- Section 2: Character Sheet -->
-        <div class="section">
+        <div class="section" id="character">
             <h2 class="section-title">📜 Character Sheet</h2>
             <div class="char-header">
                 <div class="char-field name">
@@ -761,13 +771,13 @@
         </div>
 
         <!-- Section 3: Phrase Bank -->
-        <div class="section">
+        <div class="section" id="phrases">
             <h2 class="section-title">💬 Phrase Bank</h2>
             <div class="phrase-grid" id="phraseBank"></div>
         </div>
 
         <!-- Section 4: Virtual Keyboard -->
-        <div class="section">
+        <div class="section" id="keyboard">
             <h2 class="section-title">⌨️ Virtual Keyboard</h2>
             <div class="keyboard-output-container">
                 <button class="keyboard-speak-btn" onclick="speakKeyboard()" data-gaze-region data-gaze-region-dwell-time="1500" data-gaze-region-activation-method="Gaze">🔊</button>
@@ -991,12 +1001,10 @@
         speechSynthesis.speak(utterance);
         }
 
-        function scrollPage(direction) {
-            const scrollAmount = 300;
-            if (direction === 'up') {
-                window.scrollBy({ top: -scrollAmount, behavior: 'smooth' });
-            } else if (direction === 'down') {
-                window.scrollBy({ top: scrollAmount, behavior: 'smooth' });
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         }
 
@@ -1050,6 +1058,7 @@
         
         // Scroll buttons
         document.querySelectorAll('.scroll-btn').forEach(btn => {
+            btn.addEventListener('gazeactivate', () => btn.click());
             setupGazeGlow(btn);
         });
         
