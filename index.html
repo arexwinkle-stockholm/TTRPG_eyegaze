@@ -1,273 +1,879 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Montserrat"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" type="text/css" href="style.css" />
-    <script src="js/tdbrowse_web_components.js"></script>
-    <script defer src="js/main.js"></script>
-    <title>Checkers</title>
-    <base href="testing" />
-  </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="GazeFriendly" content="True" />
+    <title>D&D Companion - Eye Gaze Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --background: #1f1a16;
+            --foreground: #d9cdb3;
+            --card: #241f1b;
+            --border: #3d3429;
+            --primary: #4499bd;
+            --primary-dark: #bababa;
+            --secondary: #2e2619;
+            --muted: #33291d;
+            --muted-foreground: #6b5d47;
+            --accent: #b8662d;
+            --crimson: #d93f3f;
+            --gold: #78a5bf;
+        }
 
-  <body>
-    <main>
-      <table>
-        <tr>
-          <td class="noPieceHere"></td>
-          <td>
-            <gazable-element dwell-time="1500" class="red-piece" id="0">
-            </gazable-element>
-          </td>
-          <td class="noPieceHere"></td>
-          <td>
-            <gazable-element
-              dwell-time="1500"
-              class="red-piece"
-              id="1"
-            ></gazable-element>
-          </td>
-          <td class="noPieceHere"></td>
-          <td>
-            <gazable-element
-              dwell-time="1500"
-              class="red-piece"
-              id="2"
-            ></gazable-element>
-          </td>
-          <td class="noPieceHere"></td>
-          <td>
-            <gazable-element
-              dwell-time="1500"
-              class="red-piece"
-              id="3"
-            ></gazable-element>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <gazable-element
-              dwell-time="1500"
-              class="red-piece"
-              id="4"
-            ></gazable-element>
-          </td>
-          <td class="noPieceHere"></td>
-          <td>
-            <gazable-element
-              dwell-time="1500"
-              class="red-piece"
-              id="5"
-            ></gazable-element>
-          </td>
-          <td class="noPieceHere"></td>
-          <td>
-            <gazable-element
-              dwell-time="1500"
-              class="red-piece"
-              id="6"
-            ></gazable-element>
-          </td>
-          <td class="noPieceHere"></td>
-          <td>
-            <gazable-element
-              dwell-time="1500"
-              class="red-piece"
-              id="7"
-            ></gazable-element>
-          </td>
-          <td class="noPieceHere"></td>
-        </tr>
-        <tr>
-          <td class="noPieceHere"></td>
-          <td>
-            <gazable-element
-              dwell-time="1500"
-              class="red-piece"
-              id="8"
-            ></gazable-element>
-          </td>
-          <td class="noPieceHere"></td>
-          <td>
-            <gazable-element
-              dwell-time="1500"
-              class="red-piece"
-              id="9"
-            ></gazable-element>
-          </td>
-          <td class="noPieceHere"></td>
-          <td>
-            <gazable-element
-              dwell-time="1500"
-              class="red-piece"
-              id="10"
-            ></gazable-element>
-          </td>
-          <td class="noPieceHere"></td>
-          <td>
-            <gazable-element
-              dwell-time="1500"
-              class="red-piece"
-              id="11"
-            ></gazable-element>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <gazable-element dwell-time="1500" class="cell"></gazable-element>
-          </td>
-          <td class="noPieceHere"></td>
-          <td>
-            <gazable-element dwell-time="1500" class="cell"></gazable-element>
-          </td>
-          <td class="noPieceHere"></td>
-          <td>
-            <gazable-element dwell-time="1500" class="cell"></gazable-element>
-          </td>
-          <td class="noPieceHere"></td>
-          <td>
-            <gazable-element dwell-time="1500" class="cell"></gazable-element>
-          </td>
-          <td class="noPieceHere"></td>
-        </tr>
-        <tr>
-          <td class="noPieceHere"></td>
-          <td>
-            <gazable-element dwell-time="1500" class="cell"></gazable-element>
-          </td>
-          <td class="noPieceHere"></td>
-          <td>
-            <gazable-element dwell-time="1500" class="cell"></gazable-element>
-          </td>
-          <td class="noPieceHere"></td>
-          <td>
-            <gazable-element dwell-time="1500" class="cell"></gazable-element>
-          </td>
-          <td class="noPieceHere"></td>
-          <td>
-            <gazable-element dwell-time="1500" class="cell"></gazable-element>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <gazable-element
-              dwell-time="1500"
-              class="black-piece"
-              id="12"
-            ></gazable-element>
-          </td>
-          <td class="noPieceHere"></td>
-          <td>
-            <gazable-element
-              dwell-time="1500"
-              class="black-piece"
-              id="13"
-            ></gazable-element>
-          </td>
-          <td class="noPieceHere"></td>
-          <td>
-            <gazable-element
-              dwell-time="1500"
-              class="black-piece"
-              id="14"
-            ></gazable-element>
-          </td>
-          <td class="noPieceHere"></td>
-          <td>
-            <gazable-element
-              dwell-time="1500"
-              class="black-piece"
-              id="15"
-            ></gazable-element>
-          </td>
-          <td class="noPieceHere"></td>
-        </tr>
-        <tr>
-          <td class="noPieceHere"></td>
-          <td>
-            <gazable-element
-              dwell-time="1500"
-              class="black-piece"
-              id="16"
-            ></gazable-element>
-          </td>
-          <td class="noPieceHere"></td>
-          <td>
-            <gazable-element
-              dwell-time="1500"
-              class="black-piece"
-              id="17"
-            ></gazable-element>
-          </td>
-          <td class="noPieceHere"></td>
-          <td>
-            <gazable-element
-              dwell-time="1500"
-              class="black-piece"
-              id="18"
-            ></gazable-element>
-          </td>
-          <td class="noPieceHere"></td>
-          <td>
-            <gazable-element
-              dwell-time="1500"
-              class="black-piece"
-              id="19"
-            ></gazable-element>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <gazable-element
-              dwell-time="1500"
-              class="black-piece"
-              id="20"
-            ></gazable-element>
-          </td>
-          <td class="noPieceHere"></td>
-          <td>
-            <gazable-element
-              dwell-time="1500"
-              class="black-piece"
-              id="21"
-            ></gazable-element>
-          </td>
-          <td class="noPieceHere"></td>
-          <td>
-            <gazable-element
-              dwell-time="1500"
-              class="black-piece"
-              id="22"
-            ></gazable-element>
-          </td>
-          <td class="noPieceHere"></td>
-          <td>
-            <gazable-element
-              dwell-time="1500"
-              class="black-piece"
-              id="23"
-            ></gazable-element>
-          </td>
-          <td class="noPieceHere"></td>
-        </tr>
-      </table>
-      <div class="desktop">
-        <div class="red-turn-text">Reds turn</div>
-        <p id="divider"></p>
-        <div class="black-turn-text">Blacks turn</div>
-        <gazable-square-button onclick="location.reload()"
-          >Reset</gazable-square-button
-        >
-      </div>
-    </main>
-  </body>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1f1a16 0%, #251f1a 100%);
+            background-attachment: fixed;
+            color: var(--foreground);
+            font-family: 'Crimson Text', serif;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5em;
+            font-weight: 900;
+            color: var(--gold);
+            text-shadow: 0 0 20px rgba(202, 209, 230, 0.5);
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            color: var(--muted-foreground);
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        .section {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5em;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        /* Dice Roller Styles */
+        .dice-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .dice-type {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .dice-label {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3em;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .dice-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .dice-btn {
+            background: var(--muted);
+            border: 1px solid var(--border);
+            color: var(--foreground);
+            width: 35px;
+            height: 35px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: all 0.2s;
+        }
+
+        .dice-btn:hover {
+            background: var(--primary);
+            color: var(--primary-dark);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .dice-count {
+            font-size: 1.2em;
+            font-weight: bold;
+            min-width: 25px;
+        }
+
+        .roll-btn {
+            width: 100%;
+            padding: 15px;
+            background: var(--primary);
+            color: var(--primary-dark);
+            border: none;
+            border-radius: 8px;
+            font-family: 'Cinzel', serif;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 20px;
+        }
+
+        .roll-btn:hover:not(:disabled) {
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .roll-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .result-display {
+            text-align: center;
+            padding: 20px;
+            background: var(--secondary);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .result-total {
+            font-family: 'Cinzel', serif;
+            font-size: 3em;
+            font-weight: 900;
+            color: var(--primary);
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+        }
+
+        .result-breakdown {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .result-die {
+            background: var(--muted);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        .result-die.crit {
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .result-die.fail {
+            color: var(--crimson);
+            font-weight: bold;
+        }
+
+        /* Character Sheet Styles */
+        .char-header {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .char-field {
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .char-field label {
+            display: block;
+            font-size: 0.8em;
+            color: var(--muted-foreground);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .char-field input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid var(--border);
+            color: var(--foreground);
+            font-family: 'Cinzel', serif;
+            font-size: 1.2em;
+            padding: 5px 0;
+            transition: border-color 0.2s;
+        }
+
+        .char-field input:focus {
+            outline: none;
+            border-bottom-color: var(--primary);
+        }
+
+        .char-field.name input {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .stat-box {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            color: var(--muted-foreground);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .stat-value {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8em;
+            font-weight: bold;
+            color: var(--foreground);
+        }
+
+        .stat-value input {
+            background: transparent;
+            border: none;
+            color: var(--foreground);
+            font-family: 'Cinzel', serif;
+            font-size: 1em;
+            font-weight: bold;
+            text-align: center;
+            width: 60px;
+        }
+
+        .stat-value input:focus {
+            outline: 2px solid var(--primary);
+            border-radius: 4px;
+        }
+
+        .abilities-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .ability-box {
+            background: var(--muted);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .ability-name {
+            font-family: 'Cinzel', serif;
+            font-size: 0.9em;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .ability-score {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .ability-modifier {
+            font-size: 0.9em;
+            color: var(--muted-foreground);
+        }
+
+        /* Phrase Bank Styles */
+        .phrase-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .phrase-btn {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            color: var(--foreground);
+            padding: 12px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.95em;
+            transition: all 0.2s;
+        }
+
+        .phrase-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .phrase-btn.copied {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: var(--primary-dark);
+        }
+
+        /* Keyboard Styles */
+        .keyboard-output {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            min-height: 50px;
+            font-size: 1.2em;
+            word-wrap: break-word;
+        }
+
+        .keyboard-output.empty {
+            color: var(--muted-foreground);
+            font-style: italic;
+        }
+
+        .keyboard {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .keyboard-row {
+            display: flex;
+            gap: 8px;
+        }
+
+        .key {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            color: var(--foreground);
+            font-family: 'Cinzel', serif;
+            font-weight: 600;
+            min-width: 100px;
+            height: 120px;
+            font-size: 2.2em;
+            border-radius: 14px;
+            cursor: pointer;
+            transition: all 0.15s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .key:hover {
+            background: var(--primary);
+            color: var(--primary-dark);
+        }
+
+        .key:active {
+            transform: scale(0.95);
+        }
+
+        .key.space {
+            min-width: 520px;
+        }
+
+        .key.special {
+            min-width: 80px;
+            font-size: 0.85em;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .dice-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .abilities-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .key {
+                min-width: 35px;
+                height: 45px;
+            }
+
+            .key.space {
+                min-width: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>D&D Companion</h1>
+            <p class="subtitle">Your tabletop toolkit with eye-gaze support</p>
+        </header>
+
+        <!-- Section 1: Dice Roller -->
+        <div class="section">
+            <h2 class="section-title">🎲 Dice Roller</h2>
+            <div class="dice-grid">
+                <div class="dice-type">
+                    <div class="dice-label">d4</div>
+                    <div class="dice-controls">
+                        <button class="dice-btn" onclick="updateDice('d4', -1)" 
+                            data-gaze-region
+        data-gaze-region-dwell-time="300"
+        data-gaze-region-activation-method="Gaze">−</button>
+                        <span class="dice-count" id="count-d4">0</span>
+                        <button class="dice-btn" onclick="updateDice('d4', 1)" 
+                            data-gaze-region
+        data-gaze-region-dwell-time="300"
+        data-gaze-region-activation-method="Gaze">+</button>
+                    </div>
+                </div>
+                <div class="dice-type">
+                    <div class="dice-label">d6</div>
+                    <div class="dice-controls">
+                        <button class="dice-btn" onclick="updateDice('d6', -1)" 
+                            data-gaze-region
+        data-gaze-region-dwell-time="300"
+        data-gaze-region-activation-method="Gaze">−</button>
+                        <span class="dice-count" id="count-d6">0</span>
+                        <button class="dice-btn" onclick="updateDice('d6', 1)" 
+                            data-gaze-region
+        data-gaze-region-dwell-time="300"
+        data-gaze-region-activation-method="Gaze">+</button>
+                    </div>
+                </div>
+                <div class="dice-type">
+                    <div class="dice-label">d8</div>
+                    <div class="dice-controls">
+                        <button class="dice-btn" onclick="updateDice('d8', -1)" 
+                            data-gaze-region
+        data-gaze-region-dwell-time="300"
+        data-gaze-region-activation-method="Gaze">−</button>
+                        <span class="dice-count" id="count-d8">0</span>
+                        <button class="dice-btn" onclick="updateDice('d8', 1)" 
+                            data-gaze-region
+        data-gaze-region-dwell-time="300"
+        data-gaze-region-activation-method="Gaze">+</button>
+                    </div>
+                </div>
+                <div class="dice-type">
+                    <div class="dice-label">d10</div>
+                    <div class="dice-controls">
+                        <button class="dice-btn" onclick="updateDice('d10', -1)" 
+                            data-gaze-region
+        data-gaze-region-dwell-time="300"
+        data-gaze-region-activation-method="Gaze">−</button>
+                        <span class="dice-count" id="count-d10">0</span>
+                        <button class="dice-btn" onclick="updateDice('d10', 1)" 
+                            data-gaze-region
+        data-gaze-region-dwell-time="300"
+        data-gaze-region-activation-method="Gaze">+</button>
+                    </div>
+                </div>
+                <div class="dice-type">
+                    <div class="dice-label">d12</div>
+                    <div class="dice-controls">
+                        <button class="dice-btn" onclick="updateDice('d12', -1)" 
+                            data-gaze-region
+        data-gaze-region-dwell-time="300"
+        data-gaze-region-activation-method="Gaze">−</button>
+                        <span class="dice-count" id="count-d12">0</span>
+                        <button class="dice-btn" onclick="updateDice('d12', 1)" 
+                            data-gaze-region
+        data-gaze-region-dwell-time="300"
+        data-gaze-region-activation-method="Gaze">+</button>
+                    </div>
+                </div>
+                <div class="dice-type">
+                    <div class="dice-label">d20</div>
+                    <div class="dice-controls">
+                        <button class="dice-btn" onclick="updateDice('d20', -1)" 
+                            data-gaze-region 
+                            data-gaze-region-dwell-time="300" 
+                            data-gaze-region-activation-method="Gaze">−</button>
+                        <span class="dice-count" id="count-d20">1</span>
+                        <button class="dice-btn" onclick="updateDice('d20', 1)" 
+                            data-gaze-region
+        data-gaze-region-dwell-time="300"
+        data-gaze-region-activation-method="Gaze">+</button>
+                    </div>
+                </div>
+            </div>
+                <button class="roll-btn" id="rollBtn" onclick="rollDice()"
+                    data-gaze-region
+                    data-gaze-region-dwell-time="2000"
+                    data-gaze-region-activation-method="Gaze">
+                    🎲 Roll Dice
+                </button>
+            <div class="result-display" id="result" style="display: none;">
+                <div class="result-total" id="resultTotal">0</div>
+                <div class="result-breakdown" id="resultBreakdown"></div>
+            </div>
+        </div>
+
+        <!-- Section 2: Character Sheet -->
+        <div class="section">
+            <h2 class="section-title">📜 Character Sheet</h2>
+            <div class="char-header">
+                <div class="char-field name">
+                    <label>Character Name</label>
+                    <input type="text" id="charName" value="Unnamed Hero">
+                </div>
+                <div class="char-field">
+                    <label>Race</label>
+                    <input type="text" id="charRace" value="Human">
+                </div>
+                <div class="char-field">
+                    <label>Class</label>
+                    <input type="text" id="charClass" value="Fighter">
+                </div>
+                <div class="char-field">
+                    <label>Level</label>
+                    <input type="number" id="charLevel" value="1" 
+                           data-gaze-region 
+                           data-gaze-region-dwell-time="300"  
+                           data-gaze-region-activation-method="Gaze">
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-label">🛡️ AC</div>
+                    <div class="stat-value">
+                        <input type="number" id="charAC" value="16" 
+                               data-gaze-region 
+                               data-gaze-region-dwell-time="300"  
+                               data-gaze-region-activation-method="Gaze">
+                    </div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">⚔️ Initiative</div>
+                    <div class="stat-value">
+                        <input type="number" id="charInit" value="2" 
+                               data-gaze-region 
+                               data-gaze-region-dwell-time="300"  
+                               data-gaze-region-activation-method="Gaze">
+                    </div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">🎯 Prof. Bonus</div>
+                    <div class="stat-value">
+                        <input type="number" id="charProf" value="2" 
+                               data-gaze-region 
+                               data-gaze-region-dwell-time="300"  
+                               data-gaze-region-activation-method="Gaze">
+                    </div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">💚 HP</div>
+                    <div class="stat-value">
+                        <input type="number" id="charHP" value="12" style="width: 50px"
+                               data-gaze-region 
+                               data-gaze-region-dwell-time="300"  
+                               data-gaze-region-activation-method="Gaze"> / 
+                        <input type="number" id="charMaxHP" value="12" style="width: 50px"
+                               data-gaze-region 
+                               data-gaze-region-dwell-time="300"  
+                               data-gaze-region-activation-method="Gaze">
+                    </div>
+                </div>
+            </div>
+
+            <div class="char-field">
+                <label>Main Attack</label>
+                <input type="text" id="charAttack" value="Longsword +5 (1d8+3 slashing)">
+            </div>
+
+            <div class="abilities-grid">
+                <div class="ability-box">
+                    <div class="ability-name">STR</div>
+                    <div class="ability-score">16</div>
+                    <div class="ability-modifier">+3</div>
+                </div>
+                <div class="ability-box">
+                    <div class="ability-name">DEX</div>
+                    <div class="ability-score">14</div>
+                    <div class="ability-modifier">+2</div>
+                </div>
+                <div class="ability-box">
+                    <div class="ability-name">CON</div>
+                    <div class="ability-score">14</div>
+                    <div class="ability-modifier">+2</div>
+                </div>
+                <div class="ability-box">
+                    <div class="ability-name">INT</div>
+                    <div class="ability-score">10</div>
+                    <div class="ability-modifier">+0</div>
+                </div>
+                <div class="ability-box">
+                    <div class="ability-name">WIS</div>
+                    <div class="ability-score">12</div>
+                    <div class="ability-modifier">+1</div>
+                </div>
+                <div class="ability-box">
+                    <div class="ability-name">CHA</div>
+                    <div class="ability-score">8</div>
+                    <div class="ability-modifier">-1</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Phrase Bank -->
+        <div class="section">
+            <h2 class="section-title">💬 Phrase Bank</h2>
+            <div class="phrase-grid" id="phraseBank"></div>
+        </div>
+
+        <!-- Section 4: Virtual Keyboard -->
+        <div class="section">
+            <h2 class="section-title">⌨️ Virtual Keyboard</h2>
+            <div class="keyboard-output" id="keyboardOutput">
+                <span class="empty">Type something...</span>
+            </div>
+            <div class="keyboard">
+                <div class="keyboard-row">
+                    <button class="key" onclick="typeKey('1')" data-gaze-region data-gaze-region-dwell-time="300" data-gaze-region-activation-method="Gaze">1</button>
+                    <button class="key" onclick="typeKey('2')" data-gaze-region data-gaze-region-dwell-time="300" data-gaze-region-activation-method="Gaze">2</button>
+                    <button class="key" onclick="typeKey('3')" data-gaze-region data-gaze-region-dwell-time="300" data-gaze-region-activation-method="Gaze">3</button>
+                    <button class="key" onclick="typeKey('4')" data-gaze-region data-gaze-region-dwell-time="300" data-gaze-region-activation-method="Gaze">4</button>
+                    <button class="key" onclick="typeKey('5')" data-gaze-region data-gaze-region-dwell-time="300" data-gaze-region-activation-method="Gaze">5</button>
+                    <button class="key" onclick="typeKey('6')" data-gaze-region data-gaze-region-dwell-time="300" data-gaze-region-activation-method="Gaze">6</button>
+                    <button class="key" onclick="typeKey('7')" data-gaze-region data-gaze-region-dwell-time="300" data-gaze-region-activation-method="Gaze">7</button>
+                    <button class="key" onclick="typeKey('8')" data-gaze-region data-gaze-region-dwell-time="300" data-gaze-region-activation-method="Gaze">8</button>
+                    <button class="key" onclick="typeKey('9')" data-gaze-region data-gaze-region-dwell-time="300" data-gaze-region-activation-method="Gaze">9</button>
+                    <button class="key" onclick="typeKey('0')" data-gaze-region data-gaze-region-dwell-time="300" data-gaze-region-activation-method="Gaze">0</button>
+                </div>
+                <div class="keyboard-row">
+                    <button class="key" onclick="typeKey('Q')" data-gaze-region data-gaze-region-dwell-time="300" data-gaze-region-activation-method="Gaze">Q</button>
+                    <button class="key" onclick="typeKey('W')" data-gaze-region data-gaze-region-dwell-time="300" data-gaze-region-activation-method="Gaze">W</button>
+                    <button class="key" onclick="typeKey('E')" data-gaze-region data-gaze-region-dwell-time="300" data-gaze-region-activation-method="Gaze">E</button>
+                    <button class="key" onclick="typeKey('R')" data-gaze-region data-gaze-region-dwell-time="300" data-gaze-region-activation-method="Gaze">R</button>
+                    <button class="key" onclick="typeKey('T')" data-gaze-region data-gaze-region-dwell-time="300" data-gaze-region-activation-method="Gaze">T</button>
+                    <button class="key" onclick="typeKey('Y')" data-gaze-region data-gaze-region-dwell-time="300" data-gaze-region-activation-method="Gaze">Y</button>
+                    <button class="key" onclick="typeKey('U')" data-gaze-region data-gaze-region-dwell-time="300" data-gaze-region-activation-method="Gaze">U</button>
+                    <button class="key" onclick="typeKey('I')" data-gaze-region data-gaze-region-dwell-time="300" data-gaze-region-activation-method="Gaze">I</button>
+                    <button class="key" onclick="typeKey('O')" data-gaze-region data-gaze-region-dwell-time="300" data-gaze-region-activation-method="Gaze">O</button>
+                    <button class="key" onclick="typeKey('P')" data-gaze-region data-gaze-region-dwell-time="300" data-gaze-region-activation-method="Gaze">P</button>
+                </div>
+                <div class="keyboard-row">
+                    <button class="key" onclick="typeKey('A')" data-gaze-region data-gaze-region-dwell-time="300" data-gaze-region-activation-method="Gaze">A</button>
+                    <button class="key" onclick="typeKey('S')" data-gaze-region data-gaze-region-dwell-time="300" data-gaze-region-activation-method="Gaze">S</button>
+                    <button class="key" onclick="typeKey('D')" data-gaze-region data-gaze-region-dwell-time="300" data-gaze-region-activation-method="Gaze">D</button>
+                    <button class="key" onclick="typeKey('F')" data-gaze-region data-gaze-region-dwell-time="300" data-gaze-region-activation-method="Gaze">F</button>
+                    <button class="key" onclick="typeKey('G')" data-gaze-region data-gaze-region-dwell-time="300" data-gaze-region-activation-method="Gaze">G</button>
+                    <button class="key" onclick="typeKey('H')" data-gaze-region data-gaze-region-dwell-time="300" data-gaze-region-activation-method="Gaze">H</button>
+                    <button class="key" onclick="typeKey('J')" data-gaze-region data-gaze-region-dwell-time="300" data-gaze-region-activation-method="Gaze">J</button>
+                    <button class="key" onclick="typeKey('K')" data-gaze-region data-gaze-region-dwell-time="300" data-gaze-region-activation-method="Gaze">K</button>
+                    <button class="key" onclick="typeKey('L')" data-gaze-region data-gaze-region-dwell-time="300" data-gaze-region-activation-method="Gaze">L</button>
+                </div>
+                <div class="keyboard-row">
+                    <button class="key" onclick="typeKey('Z')" data-gaze-region data-gaze-region-dwell-time="300" data-gaze-region-activation-method="Gaze">Z</button>
+                    <button class="key" onclick="typeKey('X')" data-gaze-region data-gaze-region-dwell-time="300" data-gaze-region-activation-method="Gaze">X</button>
+                    <button class="key" onclick="typeKey('C')" data-gaze-region data-gaze-region-dwell-time="300" data-gaze-region-activation-method="Gaze">C</button>
+                    <button class="key" onclick="typeKey('V')" data-gaze-region data-gaze-region-dwell-time="300" data-gaze-region-activation-method="Gaze">V</button>
+                    <button class="key" onclick="typeKey('B')" data-gaze-region data-gaze-region-dwell-time="300" data-gaze-region-activation-method="Gaze">B</button>
+                    <button class="key" onclick="typeKey('N')" data-gaze-region data-gaze-region-dwell-time="300" data-gaze-region-activation-method="Gaze">N</button>
+                    <button class="key" onclick="typeKey('M')" data-gaze-region data-gaze-region-dwell-time="300" data-gaze-region-activation-method="Gaze">M</button>
+                    <button class="key special" onclick="backspace()" data-gaze-region data-gaze-region-dwell-time="300" data-gaze-region-activation-method="Gaze">← Bksp</button>
+                </div>
+                <div class="keyboard-row">
+                    <button class="key space" onclick="typeKey(' ')" data-gaze-region data-gaze-region-dwell-time="300" data-gaze-region-activation-method="Gaze">Space</button>
+                    <button class="key special" onclick="clearKeyboard()" data-gaze-region data-gaze-region-dwell-time="300" data-gaze-region-activation-method="Gaze">Clear</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Dice Roller Logic
+        const diceCounts = { d4: 0, d6: 0, d8: 0, d10: 0, d12: 0, d20: 1 };
+
+        function updateDice(type, delta) {
+            diceCounts[type] = Math.max(0, Math.min(10, diceCounts[type] + delta));
+            document.getElementById(`count-${type}`).textContent = diceCounts[type];
+            updateRollButton();
+        }
+
+        function updateRollButton() {
+            const total = Object.values(diceCounts).reduce((a, b) => a + b, 0);
+            const btn = document.getElementById('rollBtn');
+            btn.textContent = `Roll ${total} Dice`;
+            btn.disabled = total === 0;
+        }
+
+        function rollDice() {
+            const resultDiv = document.getElementById('result');
+            const totalDiv = document.getElementById('resultTotal');
+            const breakdownDiv = document.getElementById('resultBreakdown');
+            
+            const rolls = [];
+            let total = 0;
+
+            for (const [type, count] of Object.entries(diceCounts)) {
+                const sides = parseInt(type.substring(1));
+                for (let i = 0; i < count; i++) {
+                    const roll = Math.floor(Math.random() * sides) + 1;
+                    rolls.push({ sides, roll });
+                    total += roll;
+                }
+            }
+
+            totalDiv.textContent = total;
+            
+            breakdownDiv.innerHTML = '';
+            rolls.forEach(({ sides, roll }) => {
+                const span = document.createElement('span');
+                span.className = 'result-die';
+                if (roll === sides) span.classList.add('crit');
+                if (roll === 1) span.classList.add('fail');
+                span.textContent = `d${sides}: ${roll}`;
+                breakdownDiv.appendChild(span);
+            });
+
+            resultDiv.style.display = 'block';
+        }
+
+        // Phrase Bank Logic
+        const phrases = [
+            "I attack!",
+            "I cast a spell.",
+            "I'd like to rage.",
+            "Can I roll perception?",
+            "I search the room.",
+            "I use my bonus action.",
+            "I ready an action.",
+            "I dash.",
+            "I disengage.",
+            "I dodge.",
+            "I want to persuade them.",
+            "I roll for stealth.",
+            "I use lay on hands.",
+            "Short rest?",
+            "Long rest?",
+            "Can I make an insight check?",
+            "I loot the body.",
+            "I open the chest.",
+            "I check for traps.",
+            "How much HP do I have?",
+            "What's my AC?",
+            "I use second wind.",
+            "I want to intimidate.",
+            "Can I use Bardic Inspiration?",
+            "I hold my action.",
+            "I grapple!",
+            "I shove them.",
+            "Healing word!",
+            "I wild shape.",
+            "Sneak attack!",
+            "I use Channel Divinity.",
+            "Action surge!",
+            "I'd like to investigate.",
+            "Can I make a history check?",
+            "I use Divine Smite.",
+            "Eldritch Blast!",
+            "I want to hide.",
+            "Can I help?",
+            "I use my reaction.",
+            "I cast Shield!"
+        ];
+
+        function initPhraseBank() {
+            const container = document.getElementById('phraseBank');
+            phrases.forEach(phrase => {
+                const btn = document.createElement('button');
+                btn.className = 'phrase-btn';
+                btn.textContent = phrase;
+                btn.setAttribute('data-gaze-region', '');
+                btn.setAttribute('data-gaze-region-dwell-time', '300');
+                btn.setAttribute('data-gaze-region-activation-method', 'Gaze');
+                // removed data-gaze-region-margin
+                btn.onclick = () => {
+                    navigator.clipboard.writeText(phrase).catch(() => {});
+                    btn.classList.add('copied');
+                    btn.textContent = 'Copied!';
+                    setTimeout(() => {
+                        btn.classList.remove('copied');
+                        btn.textContent = phrase;
+                    }, 1200);
+                };
+                container.appendChild(btn);
+            });
+        }
+
+        // Virtual Keyboard Logic
+        let keyboardText = '';
+
+        function typeKey(key) {
+            keyboardText += key;
+            updateKeyboardOutput();
+        }
+
+        function backspace() {
+            keyboardText = keyboardText.slice(0, -1);
+            updateKeyboardOutput();
+        }
+
+        function clearKeyboard() {
+            keyboardText = '';
+            updateKeyboardOutput();
+        }
+
+        function updateKeyboardOutput() {
+            const output = document.getElementById('keyboardOutput');
+            if (keyboardText) {
+                output.innerHTML = keyboardText;
+                output.classList.remove('empty');
+            } else {
+                output.innerHTML = '<span class="empty">Type something...</span>';
+                output.classList.add('empty');
+            }
+        }
+
+        // Initialize
+        initPhraseBank();
+        updateRollButton();
+    </script>
+</body>
 </html>
